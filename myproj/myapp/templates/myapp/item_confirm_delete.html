@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+{% block meta_title %}削除確認{% endblock %}
+{% block page_title %}削除確認{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <p>削除してもよろしいですか? {{ object }}</p>
+
+            <form method="post" style="display: inline-block;">
+                <button class="btn btn-danger">削除</button>
+                {% csrf_token %}
+            </form>
+
+            <button class="btn btn-light" onClick="javascript:history.go(-1);">戻る</button>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
