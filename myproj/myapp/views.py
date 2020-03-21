@@ -5,6 +5,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Item, SubItem
 from .forms import ItemForm, SubItemForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin  # UserAuth
+
 
 class ItemListView(ListView):
     """
@@ -15,7 +17,7 @@ class ItemListView(ListView):
     paginate_by = 10  # ページネーション(10件ごとに表示)
 
 
-class ItemDetailView(DetailView):
+class ItemDetailView(LoginRequiredMixin, DetailView):
     """
     GET(a record)
     templates\myapp\モデル_detail.htmlを使用
@@ -23,7 +25,7 @@ class ItemDetailView(DetailView):
     model = Item
 
 
-class ItemCreateView(CreateView):
+class ItemCreateView(LoginRequiredMixin, CreateView):
     """
     POST用画面
     templates\myapp\モデル_form.htmlを使用
@@ -39,7 +41,7 @@ class ItemCreateView(CreateView):
         return result
 
 
-class ItemUpdateView(UpdateView):
+class ItemUpdateView(LoginRequiredMixin, UpdateView):
     """
     PUT用画面
     templates\myapp\モデル_form.htmlを使用
@@ -56,7 +58,7 @@ class ItemUpdateView(UpdateView):
         return result
 
 
-class ItemDeleteView(DeleteView):
+class ItemDeleteView(LoginRequiredMixin, DeleteView):
     """
     DELETE用画面
     templates\myapp\モデル_confirm_delete.htmlを使用

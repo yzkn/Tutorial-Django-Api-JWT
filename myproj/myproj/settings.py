@@ -47,7 +47,10 @@ INSTALLED_APPS = [
 
     # JWT
     'djoser',
-    'corsheaders'
+    'corsheaders',
+
+    # UserAuth
+    'myaccapp.apps.MyaccappConfig',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +71,9 @@ ROOT_URLCONF = 'myproj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')  # UserAuth
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +151,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# UserAuth
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
