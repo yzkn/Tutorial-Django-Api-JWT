@@ -50,3 +50,5 @@ $ py manage.py runserver
 $ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT\myproj
 $ py manage.py startapp myapi
 ```
+
+### JWT 認証を追加

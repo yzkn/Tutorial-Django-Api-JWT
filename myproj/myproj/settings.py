@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from datetime import timedelta  # JWT
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,7 +43,11 @@ INSTALLED_APPS = [
 
     # myapi
     'myapi.apps.MyapiConfig',
-    'rest_framework'
+    'rest_framework',
+
+    # JWT
+    'djoser',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +58,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # JWT
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'myproj.urls'
@@ -124,3 +132,17 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# JWT
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ],
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60)
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
