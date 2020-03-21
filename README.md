@@ -2,6 +2,8 @@
 
 ---
 
+[YA-androidapp/Tutorial-Django](https://github.com/YA-androidapp/Tutorial-Django) から引き続き、JWT を利用した API 認証を設定
+
 ## git clone
 
 ```ps
