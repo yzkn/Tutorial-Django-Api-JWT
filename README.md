@@ -19,7 +19,7 @@ $ py -m pip install
 ## (Option) DB を初期化
 
 ```ps
-$ cd C:\Users\y\Documents\GitHub\Tutorial-Django\myproj
+$ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT\myproj
 $ py manage.py makemigrations
 $ py manage.py migrate
 ```
@@ -38,8 +38,15 @@ Superuser created successfully.
 ## 動作確認
 
 ```ps
-$ cd C:\Users\y\Documents\GitHub\Tutorial-Django\myproj
+$ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT\myproj
 $ py manage.py runserver
 ```
 
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)にアクセスして、 `The install worked successfully! Congratulations!` と表示されていることを確認する
+
+## API を追加
+
+```ps
+$ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT\myproj
+$ py manage.py startapp myapi
+```
