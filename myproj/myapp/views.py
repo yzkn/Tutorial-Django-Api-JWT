@@ -6,6 +6,7 @@ from .models import Item, SubItem
 from .forms import ItemForm, SubItemForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin  # UserAuth
+from django.contrib.auth.models import User
 
 
 class ItemListView(ListView):
@@ -39,6 +40,10 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
         messages.success(
             self.request, 'Created: {}'.format(form.instance))
         return result
+
+    def save(self, request, *args, **kwargs):
+        self.author = request.user  # TODO
+        super().save(*args, **kwargs)
 
 
 class ItemUpdateView(LoginRequiredMixin, UpdateView):
