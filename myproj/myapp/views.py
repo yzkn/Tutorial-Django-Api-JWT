@@ -41,9 +41,9 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
             self.request, 'Created: {}'.format(form.instance))
         return result
 
-    def save(self, request, *args, **kwargs):
-        self.author = request.user  # TODO
-        super().save(*args, **kwargs)
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        result = super().form_valid(form)
 
 
 class ItemUpdateView(LoginRequiredMixin, UpdateView):
@@ -57,6 +57,7 @@ class ItemUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('myapp:item_list')
 
     def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
         result = super().form_valid(form)
         messages.success(
             self.request, 'Updated: {}'.format(form.instance))

@@ -6,10 +6,10 @@ from .models import Item, SubItem
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['author', 'title', 'content']
+        fields = ['title', 'content']
 
 
 class SubItemForm(forms.ModelForm):
     class Meta:
         model = SubItem
-        fields = ['author', 'subtitle', 'subcontent']
+        fields = ['subtitle', 'subcontent']

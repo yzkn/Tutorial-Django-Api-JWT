@@ -11,6 +11,9 @@
     <body>
         <nav class="navbar navbar-dark bg-dark mb-5">
             <a href="#" class="navbar-brand">Navbar</a>
+            {% if user.is_authenticated %}
+            <span>{{user.username}}</span>としてサインインしています
+            {% endif %}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1"
                 aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
