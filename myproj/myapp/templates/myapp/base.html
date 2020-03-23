@@ -10,7 +10,7 @@
 
     <body>
         <nav class="navbar navbar-dark bg-dark mb-5">
-            <a href="#" class="navbar-brand">Navbar</a>
+            <a href="/" class="navbar-brand">MyApp</a>
             {% if user.is_authenticated %}
             <span>{{user.username}}</span>としてサインインしています
             {% endif %}
@@ -29,6 +29,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/user/password_change">Change password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/password_reset">Reset password</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/user/logout">Sign out</a>
