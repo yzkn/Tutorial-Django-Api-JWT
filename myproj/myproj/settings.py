@@ -156,3 +156,16 @@ CORS_ORIGIN_ALLOW_ALL = True
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Email
+# コンソール出力
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# mailtrap
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_PORT = '2525'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
