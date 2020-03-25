@@ -26,7 +26,8 @@ SECRET_KEY = 'hpsud6%m#b)9@#t=tdf#98u93bb9dcl87r6o!uo!=2kiy17b7p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# pythonanywhere
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -169,3 +170,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST_PASSWORD = ''
 # EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
+
+# pythonanywhere
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
