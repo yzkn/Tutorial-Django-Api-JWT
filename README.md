@@ -59,4 +59,34 @@ $ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT\myproj
 $ py manage.py runserver
 ```
 
-[http://127.0.0.1:8000/](http://127.0.0.1:8000/)にアクセスして、認証後アイテム一覧画面にアクセスできることを確認する
+- [http://127.0.0.1:8000/](http://127.0.0.1:8000/)にアクセスして、認証後アイテム一覧画面にアクセスできることを確認する
+- POST [http://127.0.0.1:8000/myapi/auth/jwt/create](http://127.0.0.1:8000/myapi/auth/jwt/create)にアクセスして、トークンを取得できることを確認する
+
+Request
+
+```json
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "<USERNAME>",
+  "password": "<PASSWORD>"
+}
+```
+
+Response
+
+```json
+{
+  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOi**********.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4NTI2NDUwNywianRpIjoiNjIwMTQ2MDViNWNjNDY3Yzk1MTRjZmRiNTUwYzllYzUiLCJ1c2Vy**********.C7l0oHS9lVym-X0Xe168sK7ARhgt2FQpM**********",
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOi**********.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg1MTgxNzA3LCJqdGkiOiI2NDY4ZmNiM2M5ZmE0NDBkYWQ1NjM5YmY5MTkwNDUzMSIsInVzZ**********.jgCyWD2w6vdvTrXWfI-mTFBIROwr5Ashe**********"
+}
+```
+
+- GET [http://127.0.0.1:8000/myapi/item](http://127.0.0.1:8000/myapi/item)にアクセスして、レコード一覧を取得できることを確認する
+
+Request
+
+```json
+Authorization: JWT <上の手順で取得したaccessトークン>
+```
