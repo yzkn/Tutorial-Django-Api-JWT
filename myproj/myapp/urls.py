@@ -25,4 +25,24 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)/$',
         views.ItemDeleteView.as_view(),
         name='item_delete'),
+
+    url(r'^subitem/$',
+        views.SubItemListView.as_view(),
+        name='subitem_list'),
+
+    url(r'^subitem/detail/(?P<pk>\d+)/$',
+        views.SubItemDetailView.as_view(),
+        name='subitem_detail'),
+
+    url(r'^subitem/create/$',
+        views.SubItemCreateView.as_view(),
+        name='subitem_create'),
+
+    url(r'^subitem/update/(?P<pk>\d+)/$',
+        views.SubItemUpdateView.as_view(),
+        name='subitem_update'),
+
+    url(r'^subitem/delete/(?P<pk>\d+)/$',
+        views.SubItemDeleteView.as_view(),
+        name='subitem_delete'),
 ]

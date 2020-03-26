@@ -12,4 +12,4 @@ class ItemForm(forms.ModelForm):
 class SubItemForm(forms.ModelForm):
     class Meta:
         model = SubItem
-        fields = ['subtitle', 'subcontent']
+        fields = ['item', 'subtitle', 'subcontent']

@@ -22,7 +22,8 @@ class Item(models.Model):
 
 
 class SubItem(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.PROTECT)
+    item = models.ForeignKey(
+        Item, on_delete=models.PROTECT, related_name='subitem')
     subtitle = models.CharField(
         verbose_name='サブタイトル',
         max_length=200,

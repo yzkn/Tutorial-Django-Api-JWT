@@ -79,3 +79,75 @@ class ItemDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(
             self.request, 'Removed: {}'.format(self.object))
         return result
+
+
+class SubItemListView(ListView):
+    """
+    GET(全件)
+    templates\myapp\モデル_list.htmlを使用
+    """
+    model = SubItem
+    paginate_by = 10  # ページネーション(10件ごとに表示)
+
+
+class SubItemDetailView(LoginRequiredMixin, DetailView):
+    """
+    GET(a record)
+    templates\myapp\モデル_detail.htmlを使用
+    """
+    model = SubItem
+
+
+class SubItemCreateView(LoginRequiredMixin, CreateView):
+    """
+    POST用画面
+    templates\myapp\モデル_form.htmlを使用
+    """
+    model = SubItem
+    form_class = SubItemForm
+    success_url = reverse_lazy('myapp:subitem_list')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, 'Created: {}'.format(form.instance))
+        return result
+
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        result = super().form_valid(form)
+
+
+class SubItemUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    PUT用画面
+    templates\myapp\モデル_form.htmlを使用
+    """
+    model = SubItem
+    form_class = SubItemForm
+
+    success_url = reverse_lazy('myapp:subitem_list')
+
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        result = super().form_valid(form)
+        messages.success(
+            self.request, 'Updated: {}'.format(form.instance))
+        return result
+
+
+class SubItemDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    DELETE用画面
+    templates\myapp\モデル_confirm_delete.htmlを使用
+    """
+    model = SubItem
+    form_class = SubItemForm
+
+    success_url = reverse_lazy('myapp:subitem_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request, 'Removed: {}'.format(self.object))
+        return result

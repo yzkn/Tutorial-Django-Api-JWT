@@ -1,0 +1,47 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row mb-2">
+    <div class="col text-right">
+      {% if user.is_authenticated %}
+      <a href="{% url 'myapp:subitem_create' %}" class="btn btn-primary">新規作成</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card-header">
+        Items
+      </div>
+      <div class="card card-default">
+        {% if user.is_authenticated %}
+        <ul class="list-group list-group-flush">
+          {% for o in object_list %}
+          <li class="list-group-item">
+            <a href="{% url 'myapp:subitem_detail' o.pk %}">{{ o.subtitle }}</a>
+          </li>
+          {% empty %}
+          <li class="list-group-item">
+            No subitems are available.
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="card-footer text-muted text-center">
+        {% if page_obj.has_previous %}
+        <a class="btn btn-secondary" href="/?page={{ page_obj.previous_page_number }}">前へ</a>
+        {% endif %}
+        <span>{{ page_obj.number }}/{{ paginator.num_pages }}ページ</span>
+        {% if page_obj.has_next %}
+        <a class="btn btn-secondary" href="/?page={{ page_obj.next_page_number }}">次へ</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

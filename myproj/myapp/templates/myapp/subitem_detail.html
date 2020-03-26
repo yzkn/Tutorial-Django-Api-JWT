@@ -7,42 +7,38 @@
         <div class="col-12">
             <div class="card card-default">
                 <div class="card-header">
-                    Item
+                    SubItem
                 </div>
                 <div class="card-content">
                     <div class="row">
                         <label class="col-md-2 m-1 col-form-label">タイトル</label>
                         <div class="col-md-8 m-2">
-                            {{item.title}}
+                            {{subitem.subtitle}}
                         </div>
                     </div>
                     <div class="row">
                         <label class="col-md-2 m-1 col-form-label">本文</label>
                         <div class="col-md-8 m-2">
-                            {{item.content}}
+                            {{subitem.subcontent}}
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">SubItem</label>
+                        <label class="col-md-2 m-1 col-form-label">Item</label>
                         <div class="col-md-8 m-2">
-                            {% for subitem in item.subitem.all %}
-                            <ul>
-                                <li><a href="{% url 'myapp:subitem_detail' subitem.id %}">{{subitem.subtitle}}</a></li>
-                            </ul>
-                            {% endfor %}
+                            <a href="{% url 'myapp:item_detail' subitem.item.id %}">{{subitem.item}}</a>
                         </div>
                     </div>
                     <div class="row">
                         <label class="col-md-2 m-1 col-form-label">作成者</label>
                         <div class="col-md-8 m-2">
-                            {{item.author}}
+                            {{subitem.author}}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="{% url 'myapp:item_update' object.pk %}">修正</a>
-                <a class="btn btn-danger" href="{% url 'myapp:item_delete' object.pk %}">削除</a>
+                <a class="btn btn-primary" href="{% url 'myapp:subitem_update' object.pk %}">修正</a>
+                <a class="btn btn-danger" href="{% url 'myapp:subitem_delete' object.pk %}">削除</a>
             </div>
         </div>
 
