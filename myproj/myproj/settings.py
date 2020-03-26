@@ -137,7 +137,8 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/' # pythonanywhere
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # JWT
 REST_FRAMEWORK = {
@@ -173,4 +174,3 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # pythonanywhere
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
