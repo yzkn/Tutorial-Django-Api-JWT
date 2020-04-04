@@ -1,12 +1,16 @@
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from .models import Item, SubItem
 from .forms import ItemForm, SubItemForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin  # UserAuth
 from django.contrib.auth.models import User
+
+
+class IndexView(TemplateView):
+    template_name = 'myapp/index.html'
 
 
 class ItemListView(ListView):

@@ -7,6 +7,10 @@ app_name = 'myapp'
 
 urlpatterns = [
     url(r'^$',
+        views.IndexView.as_view(),
+        name='index'),
+
+    url(r'^item/$',
         views.ItemListView.as_view(),
         name='item_list'),
 

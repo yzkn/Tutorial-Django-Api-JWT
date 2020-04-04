@@ -14,8 +14,9 @@ $ git clone https://github.com/YA-androidapp/Tutorial-Django-Api-JWT
 
 ```ps
 $ cd C:\Users\y\Documents\GitHub\Tutorial-Django-Api-JWT
+$ py -m venv djangoenv
 $ .\djangoenv\Scripts\activate
-$ py -m pip install
+$ py -m pip install -r requirements.txt
 ```
 
 ## (Option) DB を初期化
