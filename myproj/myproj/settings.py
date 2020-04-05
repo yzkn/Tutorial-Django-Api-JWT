@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 
     # UserAuth
     'myaccapp.apps.MyaccappConfig',
+
+    # API Search
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +149,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
+    # API Search
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'SEARCH_PARAM': 'q',
 }
 
 SIMPLE_JWT = {
