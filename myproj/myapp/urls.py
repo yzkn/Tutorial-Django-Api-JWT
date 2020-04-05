@@ -30,6 +30,10 @@ urlpatterns = [
         views.ItemDeleteView.as_view(),
         name='item_delete'),
 
+    url(r'^item/search/$',
+        views.ItemSearchView.as_view(),
+        name='item_search'),
+
     url(r'^subitem/$',
         views.SubItemListView.as_view(),
         name='subitem_list'),

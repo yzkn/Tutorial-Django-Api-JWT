@@ -1,0 +1,57 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="col-lg-6 offset-lg-3">
+    <h1>検索条件</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in item_search_form %}
+        <div class="form-group form-inline">
+            <label class="col-md-offset-2 col-md-3 control-label">{{ field.label }}:</label>
+            <div class="col-md-8">
+                {{ field }}
+            </div>
+        </div>
+        {% endfor %}
+        <input class="btn btn-success offset-md-8 col-md-3" type="submit" id="button" name="button" value="検索">
+    </form>
+    <h1>検索結果</h1>
+    <section class="post-list">
+        {% if object_list|length == 0 %}
+        <p>No items are available.</p>
+        {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in object_list %}
+                <tr>
+                    <th scope="row"><a href="{% url 'myapp:item_detail' post.id %}">{{ post.id }}</a></th>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </section>
+    <div class="col-6 offset-3 justify-content-center">
+        {% if is_paginated %}
+
+        <div class="card-footer text-muted text-center">
+            {% if page_obj.has_previous %}
+            <a class="btn btn-secondary" href="/?page={{ page_obj.previous_page_number }}">前へ</a>
+            {% endif %}
+            <span>{{ page_obj.number }}/{{ paginator.num_pages }}ページ</span>
+            {% if page_obj.has_next %}
+            <a class="btn btn-secondary" href="/?page={{ page_obj.next_page_number }}">次へ</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -34,11 +34,11 @@
       </div>
       <div class="card-footer text-muted text-center">
         {% if page_obj.has_previous %}
-        <a class="btn btn-secondary" href="/?page={{ page_obj.previous_page_number }}">前へ</a>
+        <a class="btn btn-secondary" href="/item/?page={{ page_obj.previous_page_number }}">前へ</a>
         {% endif %}
         <span>{{ page_obj.number }}/{{ paginator.num_pages }}ページ</span>
         {% if page_obj.has_next %}
-        <a class="btn btn-secondary" href="/?page={{ page_obj.next_page_number }}">次へ</a>
+        <a class="btn btn-secondary" href="/item/?page={{ page_obj.next_page_number }}">次へ</a>
         {% endif %}
       </div>
     </div>

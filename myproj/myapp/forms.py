@@ -9,6 +9,19 @@ class ItemForm(forms.ModelForm):
         fields = ['title', 'content']
 
 
+class ItemSearchForm(forms.Form):
+    title = forms.CharField(
+        initial='',
+        label='Title',
+        required=False,
+    )
+    content = forms.CharField(
+        initial='',
+        label='Content',
+        required=False,
+    )
+
+
 class SubItemForm(forms.ModelForm):
     class Meta:
         model = SubItem
