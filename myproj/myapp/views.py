@@ -9,6 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin  # UserAuth
 from django.contrib.auth.models import User
 
 from django.db.models import Q
+from functools import reduce
+from operator import and_
 
 
 class IndexView(TemplateView):
@@ -122,9 +124,13 @@ class ItemSearchView(LoginRequiredMixin, ListView):
             condition_title = Q()
             condition_content = Q()
             if len(title) != 0 and title[0]:
-                condition_title = Q(title__icontains=title)
+                condition_title = reduce(
+                    and_, [Q(title__icontains=title_word) for title_word in title.split()])
             if len(content) != 0 and content[0]:
-                condition_content = Q(content__contains=content)
+                condition_content = reduce(
+                    and_, [Q(content__icontains=content_word)
+                           for content_word in content.split()]
+                )
             return Item.objects.select_related().filter(condition_title & condition_content)
         else:
             return Item.objects.none()
