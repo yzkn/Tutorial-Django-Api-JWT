@@ -11,25 +11,25 @@
                 </div>
                 <div class="card-content">
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">タイトル</label>
-                        <div class="col-md-8 m-2">
-                            {{subitem.subtitle}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">本文</label>
-                        <div class="col-md-8 m-2">
-                            {{subitem.subcontent}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">Item</label>
+                        <label class="col-md-3 m-1 col-form-label">Item</label>
                         <div class="col-md-8 m-2">
                             <a href="{% url 'myapp:item_detail' subitem.item.id %}">{{subitem.item}}</a>
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">作成者</label>
+                        <label class="col-md-3 m-1 col-form-label">タイトル</label>
+                        <div class="col-md-8 m-2">
+                            {{subitem.subtitle}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 m-1 col-form-label">本文</label>
+                        <div class="col-md-8 m-2">
+                            {{subitem.subcontent}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 m-1 col-form-label">作成者</label>
                         <div class="col-md-8 m-2">
                             {{subitem.author}}
                         </div>
@@ -37,8 +37,12 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="{% url 'myapp:subitem_update' object.pk %}">修正</a>
-                <a class="btn btn-danger" href="{% url 'myapp:subitem_delete' object.pk %}">削除</a>
+                <div class="row">
+                    <div class="offset-md-3">
+                        <a class="btn btn-primary" href="{% url 'myapp:subitem_update' object.pk %}">修正</a>
+                        <a class="btn btn-danger" href="{% url 'myapp:subitem_delete' object.pk %}">削除</a>
+                    </div>
+                </div>
             </div>
         </div>
 

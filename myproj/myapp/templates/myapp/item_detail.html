@@ -11,19 +11,19 @@
                 </div>
                 <div class="card-content">
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">タイトル</label>
+                        <label class="col-md-3 m-1 col-form-label">タイトル</label>
                         <div class="col-md-8 m-2">
                             {{item.title}}
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">本文</label>
+                        <label class="col-md-3 m-1 col-form-label">本文</label>
                         <div class="col-md-8 m-2">
                             {{item.content}}
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">SubItem</label>
+                        <label class="col-md-3 m-1 col-form-label">SubItem</label>
                         <div class="col-md-8 m-2">
                             {% for subitem in item.subitem.all %}
                             <ul>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 m-1 col-form-label">作成者</label>
+                        <label class="col-md-3 m-1 col-form-label">作成者</label>
                         <div class="col-md-8 m-2">
                             {{item.author}}
                         </div>
@@ -41,8 +41,12 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="{% url 'myapp:item_update' object.pk %}">修正</a>
-                <a class="btn btn-danger" href="{% url 'myapp:item_delete' object.pk %}">削除</a>
+                <div class="row">
+                    <div class="offset-md-3">
+                        <a class="btn btn-primary" href="{% url 'myapp:item_update' object.pk %}">修正</a>
+                        <a class="btn btn-danger" href="{% url 'myapp:item_delete' object.pk %}">削除</a>
+                    </div>
+                </div>
             </div>
         </div>
 

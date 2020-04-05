@@ -14,19 +14,19 @@ urlpatterns = [
         views.ItemListView.as_view(),
         name='item_list'),
 
-    url(r'^detail/(?P<pk>\d+)/$',
+    url(r'^item/detail/(?P<pk>\d+)/$',
         views.ItemDetailView.as_view(),
         name='item_detail'),
 
-    url(r'^create/$',
+    url(r'^item/create/$',
         views.ItemCreateView.as_view(),
         name='item_create'),
 
-    url(r'^update/(?P<pk>\d+)/$',
+    url(r'^item/update/(?P<pk>\d+)/$',
         views.ItemUpdateView.as_view(),
         name='item_update'),
 
-    url(r'^delete/(?P<pk>\d+)/$',
+    url(r'^item/delete/(?P<pk>\d+)/$',
         views.ItemDeleteView.as_view(),
         name='item_delete'),
 
